@@ -18,6 +18,10 @@ export const metadata: Metadata = {
   title: "CovenAI - Build with AI. Earn your rank.",
   description:
     "Open-source community engagement framework with gamification, leaderboards, and medieval-themed tier system for AI builders.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "CovenAI - Build with AI. Earn your rank.",
     description:
@@ -25,12 +29,14 @@ export const metadata: Metadata = {
     url: "https://covenai.co",
     siteName: "CovenAI",
     type: "website",
+    images: [{ url: "/logo.png", width: 1080, height: 1080, alt: "CovenAI" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "CovenAI - Build with AI. Earn your rank.",
     description:
       "Open-source community for AI builders. Earn points, rise through medieval ranks, compete in weekly leagues.",
+    images: ["/logo.png"],
   },
 };
 
