@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>League Update: You {{CHANGE_VERB}} {{LEAGUE_NAME}}!</title>
+<!--
+  CovenAI League Change Email
+  Subject: League Update: You {{CHANGE_VERB}} {{LEAGUE_NAME}}!
+  Variables: {{USER_NAME}}, {{CHANGE_VERB}} (promoted to / demoted from), {{LEAGUE_NAME}}, {{LEAGUE_POSITION}}, {{LEAGUE_SIZE}}, {{WEEKLY_POINTS}}, {{IS_PROMOTION}} (true/false - controls color accents), {{PROMOTION_COLOR}} (#10B981 for up, #EF4444 for down), {{STATUS_LABEL}} (Promoted / Demoted), {{LEADERBOARD_URL}}, {{UNSUBSCRIBE_URL}}
+  Sent via: Resend
+-->
+</head>
+<body style="margin:0; padding:0; background-color:#1E293B; font-family:Arial, Helvetica, sans-serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#1E293B;">
+<tr>
+<td align="center" style="padding:20px 10px;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px; background-color:#0F172A; border-radius:8px; overflow:hidden;">
+
+<!-- Header -->
+<tr>
+<td style="background-color:#5B21B6; padding:32px 24px; text-align:center;">
+<h1 style="margin:0; color:#FFFFFF; font-size:28px; font-weight:700; letter-spacing:0.5px;">CovenAI</h1>
+<p style="margin:8px 0 0 0; color:#F59E0B; font-size:14px; font-weight:600; letter-spacing:1px;">BUILD WITH AI. EARN YOUR RANK.</p>
+</td>
+</tr>
+
+<!-- Main Content -->
+<tr>
+<td style="padding:32px 24px;">
+
+<p style="margin:0 0 8px 0; color:#94A3B8; font-size:14px;">Hey {{USER_NAME}},</p>
+<h2 style="margin:0 0 24px 0; color:{{PROMOTION_COLOR}}; font-size:22px; font-weight:700;">League Update: {{STATUS_LABEL}}</h2>
+
+<!-- League Badge -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px 0;">
+<tr>
+<td style="text-align:center; padding:24px; background-color:#1E293B; border-radius:8px; border-left:4px solid {{PROMOTION_COLOR}};">
+<p style="margin:0 0 4px 0; color:#94A3B8; font-size:11px; text-transform:uppercase; letter-spacing:1px;">Your League</p>
+<h3 style="margin:0 0 4px 0; color:#FFFFFF; font-size:24px; font-weight:700;">{{LEAGUE_NAME}}</h3>
+<p style="margin:0; color:{{PROMOTION_COLOR}}; font-size:14px; font-weight:600;">{{STATUS_LABEL}}</p>
+</td>
+</tr>
+</table>
+
+<!-- Stats Row -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 32px 0;">
+<tr>
+<td width="50%" style="padding:16px; background-color:#1E293B; border-radius:8px 0 0 8px; text-align:center; border-right:1px solid #334155;">
+<p style="margin:0 0 4px 0; color:#94A3B8; font-size:11px; text-transform:uppercase; letter-spacing:1px;">Position</p>
+<p style="margin:0; color:#FFFFFF; font-size:28px; font-weight:700;">{{LEAGUE_POSITION}}<span style="color:#64748B; font-size:16px; font-weight:400;">/{{LEAGUE_SIZE}}</span></p>
+</td>
+<td width="50%" style="padding:16px; background-color:#1E293B; border-radius:0 8px 8px 0; text-align:center;">
+<p style="margin:0 0 4px 0; color:#94A3B8; font-size:11px; text-transform:uppercase; letter-spacing:1px;">Weekly Points</p>
+<p style="margin:0; color:#F59E0B; font-size:28px; font-weight:700;">{{WEEKLY_POINTS}}</p>
+</td>
+</tr>
+</table>
+
+<!-- CTA Button -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center">
+<a href="{{LEADERBOARD_URL}}" style="display:inline-block; background-color:#5B21B6; color:#FFFFFF; text-decoration:none; font-size:16px; font-weight:600; padding:14px 32px; border-radius:6px;">View leaderboard</a>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- Footer -->
+<tr>
+<td style="padding:24px; border-top:1px solid #334155; text-align:center;">
+<p style="margin:0 0 8px 0; color:#64748B; font-size:12px;">CovenAI - Build with AI. Earn your rank. | covenai.co</p>
+<a href="{{UNSUBSCRIBE_URL}}" style="color:#64748B; font-size:12px; text-decoration:underline;">Unsubscribe</a>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

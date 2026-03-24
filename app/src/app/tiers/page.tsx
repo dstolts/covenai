@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { tiers } from "@/lib/tiers";
 
 export const metadata = {
@@ -25,12 +26,16 @@ export default function TiersPage() {
               }}
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-5">
+                  <Image
+                    src={`/badges/tier-${tier.rank}-${tier.name.toLowerCase()}.png`}
+                    alt={`${tier.name} badge`}
+                    width={80}
+                    height={80}
+                    className="rounded-lg"
+                  />
                 <div>
                   <div className="mb-1 flex items-center gap-3">
-                    <span
-                      className="inline-block h-4 w-4 rounded-full"
-                      style={{ backgroundColor: tier.color }}
-                    />
                     <span className="text-sm text-[#94A3B8]">Tier {tier.rank}</span>
                   </div>
                   <h2 className="text-2xl font-bold" style={{ color: tier.color }}>
@@ -39,6 +44,7 @@ export default function TiersPage() {
                   <p className="mt-1 text-sm text-[#94A3B8]">
                     {tier.points} points -- {tier.badge}
                   </p>
+                </div>
                 </div>
                 <div className="text-sm text-white/80 sm:text-right">
                   {tier.reward}

@@ -47,10 +47,10 @@ All decisions logged here for Dan's review on return.
 **Reasoning:** Root contains docs/, assets/, .HUB/, automation/, and other non-app content. Keeping the Next.js app in app/ keeps the repo clean and allows docs/assets to exist at root level without polluting the app.
 **Impact:** Medium -- affects deploy config (Vercel root directory = app/).
 
-### D009 - Gemini API for Image Generation (2026-03-24 03:10)
-**Decision:** Use Gemini 2.0 Flash (google-genai SDK) for generating logo and tier badges
-**Reasoning:** Only available image API key. Cost ~$0.067/image, 10 images = ~$0.67 total. Within budget.
-**Impact:** Low -- asset generation.
+### D009 - Imagen 4 for Image Generation (2026-03-24 03:15)
+**Decision:** Use Google Imagen 4 (imagen-4.0-generate-001 via google-genai SDK) for all brand assets
+**Reasoning:** Only available image API key. Gemini 2.0 Flash model was deprecated; Imagen 4 is current. Generated 13 total assets: 2 logos, 8 tier badges, 1 social banner, 1 OG image, 1 year badge. Estimated cost ~$0.87. All assets match brand spec (gold/purple/slate palette, medieval-meets-code aesthetic, no occult imagery).
+**Impact:** Low -- asset generation, excellent quality.
 
 ### D010 - GitHub Repo Made Public (2026-03-24 03:10)
 **Decision:** Created github.com/dstolts/covenai as public repo
@@ -61,3 +61,23 @@ All decisions logged here for Dan's review on return.
 **Decision:** Domain price monitor workflow uses GoDaddy Appraisal API + RDAP WHOIS lookup
 **Reasoning:** Free APIs, no additional credentials needed. GoDaddy provides price estimates, RDAP provides registration status and expiry. Alert only triggers on status changes (domain drops, price changes).
 **Impact:** Low -- monitoring only.
+
+### D012 - MIT License (2026-03-24 03:20)
+**Decision:** Use MIT license for the CovenAI repo
+**Reasoning:** Most permissive common OSS license. Aligns with "Open Source, Open Knowledge" value. Matches the project's positioning as a deployable framework anyone can use.
+**Impact:** Low -- standard for OSS projects.
+
+### D013 - Azure SQL Schema in covenai Schema (2026-03-24 03:20)
+**Decision:** Use `covenai` schema within existing JitAutomation database rather than a separate database
+**Reasoning:** Consistent with Dan's existing infrastructure pattern. All projects share the JitAutomation DB on DEVINFRAVM, separated by schema. Avoids new DB provisioning.
+**Impact:** Medium -- database architecture decision. Dan reviews and runs the migration.
+
+### D014 - Discord Content as 8 Separate Files (2026-03-24 03:20)
+**Decision:** Created 8 individual Discord setup files (server-description, channel-descriptions, welcome-message, rules, role-descriptions, onboarding-flow, bot-config, announcement-templates)
+**Reasoning:** Each file is paste-ready for the specific Discord section. Faster setup than reading a monolithic guide and extracting pieces.
+**Impact:** Low -- content organization.
+
+### D015 - GitHub Issue/PR Templates with Points (2026-03-24 03:25)
+**Decision:** Created bug report, feature request, and PR templates that mention CovenAI point values
+**Reasoning:** Reinforces the gamification system from the very first contribution touchpoint. Contributors see point values before submitting.
+**Impact:** Low -- contributor experience.
