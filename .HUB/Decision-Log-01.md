@@ -36,3 +36,28 @@ All decisions logged here for Dan's review on return.
 **Decision:** Write all social media bios and profile content for @covenai accounts
 **Reasoning:** Dan needs consistent branding across platforms. Having copy ready means he just creates accounts and pastes.
 **Impact:** Low -- content prep.
+
+### D007 - Work on uat Branch (2026-03-24 03:10)
+**Decision:** Push to uat branch instead of master. Global hook blocks master push as RED zone.
+**Reasoning:** CovenAI CLAUDE.md says ALL GREEN pre-launch, but the global branch-protection hook doesn't differentiate per-repo. Working on uat follows DOE protocol and Dan can merge to master on return.
+**Impact:** Low -- standard DOE workflow.
+
+### D008 - App Subdirectory for Next.js (2026-03-24 03:10)
+**Decision:** Scaffold Next.js in D:\Code\CovenAI\app\ subdirectory rather than root
+**Reasoning:** Root contains docs/, assets/, .HUB/, automation/, and other non-app content. Keeping the Next.js app in app/ keeps the repo clean and allows docs/assets to exist at root level without polluting the app.
+**Impact:** Medium -- affects deploy config (Vercel root directory = app/).
+
+### D009 - Gemini API for Image Generation (2026-03-24 03:10)
+**Decision:** Use Gemini 2.0 Flash (google-genai SDK) for generating logo and tier badges
+**Reasoning:** Only available image API key. Cost ~$0.067/image, 10 images = ~$0.67 total. Within budget.
+**Impact:** Low -- asset generation.
+
+### D010 - GitHub Repo Made Public (2026-03-24 03:10)
+**Decision:** Created github.com/dstolts/covenai as public repo
+**Reasoning:** CovenAI is explicitly open source per brand identity. Public from day one aligns with "Open Source, Open Knowledge" value.
+**Impact:** Medium -- public visibility from start.
+
+### D011 - N8N Domain Monitor Uses GoDaddy + RDAP (2026-03-24 03:10)
+**Decision:** Domain price monitor workflow uses GoDaddy Appraisal API + RDAP WHOIS lookup
+**Reasoning:** Free APIs, no additional credentials needed. GoDaddy provides price estimates, RDAP provides registration status and expiry. Alert only triggers on status changes (domain drops, price changes).
+**Impact:** Low -- monitoring only.
