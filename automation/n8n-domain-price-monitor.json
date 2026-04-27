@@ -1,0 +1,159 @@
+{
+  "name": "CovenAI Domain Price Monitor - covenai.com",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 9,
+              "daysInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Daily Check 9AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.godaddy.com/v1/appraisal/covenai.com",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "godaddy-appraisal",
+      "name": "GoDaddy Appraisal API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 200],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "https://rdap.org/domain/covenai.com",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "rdap-whois",
+      "name": "RDAP WHOIS Lookup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 400],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const appraisal = $input.first().json;\nconst whois = $('RDAP WHOIS Lookup').first().json;\n\nconst now = new Date().toISOString();\nlet status = 'unknown';\nlet registrar = 'unknown';\nlet expiryDate = 'unknown';\n\n// Parse WHOIS/RDAP data\nif (whois && whois.events) {\n  const expiry = whois.events.find(e => e.eventAction === 'expiration');\n  if (expiry) expiryDate = expiry.eventDate;\n  status = whois.status ? whois.status.join(', ') : 'unknown';\n}\nif (whois && whois.entities) {\n  const reg = whois.entities.find(e => e.roles && e.roles.includes('registrar'));\n  if (reg) registrar = reg.vcardArray ? reg.vcardArray[1].find(v => v[0] === 'fn')?.[3] : 'unknown';\n}\n\n// Parse appraisal\nlet appraisalValue = 'unavailable';\nif (appraisal && appraisal.GoDADDYEstimateValue) {\n  appraisalValue = '$' + appraisal.GoDADDYEstimateValue;\n}\n\nreturn [{\n  json: {\n    domain: 'covenai.com',\n    checkedAt: now,\n    status: status,\n    registrar: registrar,\n    expiryDate: expiryDate,\n    appraisalValue: appraisalValue,\n    alert: false,\n    message: `Domain check: covenai.com | Status: ${status} | Registrar: ${registrar} | Expiry: ${expiryDate} | Appraisal: ${appraisalValue}`\n  }\n}];"
+      },
+      "id": "process-data",
+      "name": "Process Domain Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "price-drop",
+              "leftValue": "={{ $json.alert }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        }
+      },
+      "id": "check-alert",
+      "name": "Alert Needed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [920, 300]
+    },
+    {
+      "parameters": {
+        "fromEmail": "notifications@jitai.co",
+        "toEmail": "dan@jitai.co",
+        "subject": "=CovenAI Domain Alert: {{ $json.domain }}",
+        "emailType": "text",
+        "message": "=Domain: {{ $json.domain }}\nStatus: {{ $json.status }}\nRegistrar: {{ $json.registrar }}\nExpiry: {{ $json.expiryDate }}\nAppraisal: {{ $json.appraisalValue }}\n\nCheck: https://www.godaddy.com/domainsearch/find?domainToCheck=covenai.com"
+      },
+      "id": "send-alert",
+      "name": "Send Alert Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1140, 200],
+      "credentials": {
+        "smtp": {
+          "id": "resend-smtp",
+          "name": "Resend SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "no-op",
+      "name": "No Alert Needed",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [1140, 400]
+    }
+  ],
+  "connections": {
+    "Daily Check 9AM": {
+      "main": [
+        [
+          { "node": "GoDaddy Appraisal API", "type": "main", "index": 0 },
+          { "node": "RDAP WHOIS Lookup", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "GoDaddy Appraisal API": {
+      "main": [
+        [{ "node": "Process Domain Data", "type": "main", "index": 0 }]
+      ]
+    },
+    "RDAP WHOIS Lookup": {
+      "main": [
+        [{ "node": "Process Domain Data", "type": "main", "index": 0 }]
+      ]
+    },
+    "Process Domain Data": {
+      "main": [
+        [{ "node": "Alert Needed?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Alert Needed?": {
+      "main": [
+        [{ "node": "Send Alert Email", "type": "main", "index": 0 }],
+        [{ "node": "No Alert Needed", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": [
+    { "name": "CovenAI" },
+    { "name": "Domain Monitor" }
+  ]
+}

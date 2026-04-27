@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your {{STREAK_DAYS}}-day streak is about to break!</title>
+<!--
+  CovenAI Streak Warning Email
+  Subject: Your {{STREAK_DAYS}}-day streak is about to break!
+  Variables: {{USER_NAME}}, {{STREAK_DAYS}}, {{HOURS_LEFT}}, {{POINTS_AT_RISK}}, {{ENGAGE_URL}}, {{FREEZE_URL}}, {{UNSUBSCRIBE_URL}}
+  Sent via: Resend
+-->
+</head>
+<body style="margin:0; padding:0; background-color:#1E293B; font-family:Arial, Helvetica, sans-serif;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#1E293B;">
+<tr>
+<td align="center" style="padding:20px 10px;">
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px; background-color:#0F172A; border-radius:8px; overflow:hidden;">
+
+<!-- Header - Urgent variant -->
+<tr>
+<td style="background-color:#5B21B6; padding:32px 24px; text-align:center;">
+<h1 style="margin:0; color:#FFFFFF; font-size:28px; font-weight:700; letter-spacing:0.5px;">CovenAI</h1>
+<p style="margin:8px 0 0 0; color:#F59E0B; font-size:14px; font-weight:600; letter-spacing:1px;">BUILD WITH AI. EARN YOUR RANK.</p>
+</td>
+</tr>
+
+<!-- Urgency Banner -->
+<tr>
+<td style="background-color:#7F1D1D; padding:12px 24px; text-align:center;">
+<p style="margin:0; color:#FCA5A5; font-size:14px; font-weight:700; letter-spacing:0.5px;">STREAK AT RISK -- {{HOURS_LEFT}} HOURS LEFT</p>
+</td>
+</tr>
+
+<!-- Main Content -->
+<tr>
+<td style="padding:32px 24px;">
+
+<p style="margin:0 0 8px 0; color:#94A3B8; font-size:14px;">Hey {{USER_NAME}},</p>
+<h2 style="margin:0 0 8px 0; color:#FFFFFF; font-size:22px; font-weight:700;">Your streak is about to break.</h2>
+<p style="margin:0 0 24px 0; color:#CBD5E1; font-size:14px; line-height:1.6;">You have <strong style="color:#FCA5A5;">{{HOURS_LEFT}} hours</strong> to engage before your streak resets to zero.</p>
+
+<!-- Streak Stats -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px 0;">
+<tr>
+<td width="50%" style="padding:16px; background-color:#1E293B; border-radius:8px 0 0 8px; text-align:center; border-right:1px solid #334155;">
+<p style="margin:0 0 4px 0; color:#94A3B8; font-size:11px; text-transform:uppercase; letter-spacing:1px;">Current Streak</p>
+<p style="margin:0; color:#F59E0B; font-size:36px; font-weight:700;">{{STREAK_DAYS}}</p>
+<p style="margin:4px 0 0 0; color:#94A3B8; font-size:12px;">days</p>
+</td>
+<td width="50%" style="padding:16px; background-color:#1E293B; border-radius:0 8px 8px 0; text-align:center;">
+<p style="margin:0 0 4px 0; color:#94A3B8; font-size:11px; text-transform:uppercase; letter-spacing:1px;">Points at Risk</p>
+<p style="margin:0; color:#EF4444; font-size:36px; font-weight:700;">{{POINTS_AT_RISK}}</p>
+<p style="margin:4px 0 0 0; color:#94A3B8; font-size:12px;">streak bonus</p>
+</td>
+</tr>
+</table>
+
+<!-- CTA Button -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px 0;">
+<tr>
+<td align="center">
+<a href="{{ENGAGE_URL}}" style="display:inline-block; background-color:#10B981; color:#FFFFFF; text-decoration:none; font-size:16px; font-weight:700; padding:14px 32px; border-radius:6px;">Keep your streak alive</a>
+</td>
+</tr>
+</table>
+
+<!-- Streak Freeze Option -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 0 0;">
+<tr>
+<td style="padding:16px; background-color:#1E293B; border-radius:8px; border:1px solid #334155; text-align:center;">
+<p style="margin:0 0 8px 0; color:#CBD5E1; font-size:14px;">Can't engage today? Use a <strong style="color:#FFFFFF;">Streak Freeze</strong> to protect your streak.</p>
+<p style="margin:0 0 12px 0; color:#94A3B8; font-size:12px;">Costs 50 points -- but saves your {{STREAK_DAYS}}-day streak.</p>
+<a href="{{FREEZE_URL}}" style="display:inline-block; background-color:transparent; color:#F59E0B; text-decoration:none; font-size:14px; font-weight:600; padding:10px 24px; border-radius:6px; border:1px solid #F59E0B;">Use Streak Freeze (50 pts)</a>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<!-- Footer -->
+<tr>
+<td style="padding:24px; border-top:1px solid #334155; text-align:center;">
+<p style="margin:0 0 8px 0; color:#64748B; font-size:12px;">CovenAI - Build with AI. Earn your rank. | covenai.co</p>
+<a href="{{UNSUBSCRIBE_URL}}" style="color:#64748B; font-size:12px; text-decoration:underline;">Unsubscribe</a>
+</td>
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+</body>
+</html>

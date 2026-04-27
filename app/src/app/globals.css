@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1E293B;
+  --background-darker: #0F172A;
+  --foreground: #FFFFFF;
+  --foreground-muted: #94A3B8;
+  --purple: #5B21B6;
+  --purple-light: #7C3AED;
+  --gold: #F59E0B;
+  --emerald: #10B981;
+  --ruby: #DC2626;
+  --border: #334155;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--foreground-muted);
+  --color-purple: var(--purple);
+  --color-purple-light: var(--purple-light);
+  --color-gold: var(--gold);
+  --color-emerald: var(--emerald);
+  --color-ruby: var(--ruby);
+  --color-border: var(--border);
+  --color-bg-darker: var(--background-darker);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
