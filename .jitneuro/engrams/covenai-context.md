@@ -23,7 +23,7 @@ owner: dstolts
 - **Brand:** CovenAI (one word). Casual: "The Coven". NEVER "Coven AI" (two words -- that's a crypto entity at covenai.org)
 - **Tech:** Next.js 16, React 19, Tailwind CSS 4, TypeScript, Vercel. Azure SQL planned.
 - **Status:** Pre-launch. Planning complete (24 docs). Trademark filed (Serial #99720370, 2026-03-24). Site build next.
-- **Repo:** D:\Code\Futures\CovenAI (local), github.com/dstolts/covenai (to create)
+- **Repo:** c:\users\dstolts\code\Futures\CovenAI (local), github.com/dstolts/covenai (to create)
 - **Domains:** covenai.co (primary), covenai.ai (redirect)
 
 ## Mission
@@ -47,10 +47,10 @@ owner: dstolts
 - Streak multipliers: 7-day (1.5x), 14-day (1.75x), 30-day (2x), streak freeze costs 50 pts
 - Team system: 3-5 contributors, public repo OR private repo + published story
 - Prize budget: $250/mo base, +$250 at milestones (50K, 100K, 250K, 500K, 1M, 2M, 3M followers)
-- Full spec: D:\Code\Futures\CovenAI\docs\gamification-spec-01.md
+- Full spec: c:\users\dstolts\code\Futures\CovenAI\docs\gamification-spec-01.md
 
 ## Content (Marketing)
-- 95 video scripts at D:\Code\Automation\Projects\JitNeuro-Marketing\scripts\
+- 95 video scripts at c:\users\dstolts\code\Automation\Projects\JitNeuro-Marketing\scripts\
 - 5 "Mastery" series (10 episodes each): Claude Code, Session, Memory, Thinking, Multi-Agent
 - 35 standalone shorts + 10 deep dives
 - All platforms: YouTube Shorts, Instagram Reels, TikTok, LinkedIn

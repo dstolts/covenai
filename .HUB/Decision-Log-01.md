@@ -43,7 +43,7 @@ All decisions logged here for Dan's review on return.
 **Impact:** Low -- standard DOE workflow.
 
 ### D008 - App Subdirectory for Next.js (2026-03-24 03:10)
-**Decision:** Scaffold Next.js in D:\Code\CovenAI\app\ subdirectory rather than root
+**Decision:** Scaffold Next.js in c:\users\dstolts\code\CovenAI\app\ subdirectory rather than root
 **Reasoning:** Root contains docs/, assets/, .HUB/, automation/, and other non-app content. Keeping the Next.js app in app/ keeps the repo clean and allows docs/assets to exist at root level without polluting the app.
 **Impact:** Medium -- affects deploy config (Vercel root directory = app/).
 
