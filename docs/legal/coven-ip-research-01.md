@@ -295,7 +295,7 @@ For jitai.co targeting enterprise clients (Fidelity, Nasdaq, BMO -- financial se
 - **CLEAR for continued use.**
 - No conflicting trademarks found in software/technology categories.
 - One unrelated company found: "First Mover Co." -- a marketing facility founded 2016 (different industry).
-- Dan already owns and uses this brand (D:\Code\FirstMover repo is active).
+- Dan already owns and uses this brand (c:\users\dstolts\code\FirstMover repo is active).
 - Using "FirstMover" for the community leverages existing brand equity.
 - However: "FirstMover" suggests a product/strategy, not a community gathering place. "The Coven" has more community warmth.
 

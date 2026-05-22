@@ -22,5 +22,5 @@ Everything is GREEN until we go live. No production users, no risk.
 
 ## Context Loading
 - Read root CLAUDE.md for project identity and key paths
-- Read D:\Code\.claude\engrams\covenai-context.md for deeper detail
+- Read c:\users\dstolts\code\.claude\engrams\covenai-context.md for deeper detail
 - Read brain (MEMORY.md) for cross-project business context
